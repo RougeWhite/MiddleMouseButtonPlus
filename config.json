@@ -1,0 +1,19 @@
+{
+  "url": "https://tophub.today/",
+  "userconfig": "UserConfig.ini",
+  "default_setting_filename":"config.json",
+  "help_filename":"Help.txt",
+  "widget_width": 200,
+  "widget_height": 300,
+  "card_width": 100,
+  "card_height": 50,
+
+  "display_width": 1920,
+  "display_height": 1080,
+
+  "widget_postion_width": 1570,
+  "widget_postion_height": 15,
+  "page_num": 9,
+  "get_class": "cc-cd"
+
+}
