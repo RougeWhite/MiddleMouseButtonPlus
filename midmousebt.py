@@ -364,17 +364,17 @@ def Gui(root,SetJson,x,y,recent_txt):
     global card_img
     card_img = ImageTk.PhotoImage(resize(os.getcwd() + './images/card.png'))
     # 创建画布
-    canvas = tk.Canvas(root, width=widget_width, height=widget_height, bg="white")
+    canvas = tk.Canvas(root, width=widget_width, height=widget_height, bg=SetJson["bg_color"])
     canvas.place(x=1, y=0)
     canvas.create_line(20, 0, 20, 325)
     # 创建按钮
     pre_bt = tk.Button(root
                        # , text="<<"
                       , command=lambda: OpenCard(cardtext_list)
-                      , bg="white"
-                      , activebackground="white"
-                      , activeforeground="white"
-                      , fg="white"
+                      , bg=SetJson["bg_color"]
+                      , activebackground=SetJson["bg_color"]
+                      , activeforeground=SetJson["bg_color"]
+                      , fg=SetJson["bg_color"]
                       , relief="flat"
                       )
     pre_bt.config(image=card_img)
@@ -396,53 +396,53 @@ def Gui(root,SetJson,x,y,recent_txt):
                              justify='left',  # 设置文本对齐方式：左对齐
                              anchor='nw',  # 设置文本在label的方位：西北方位
                              font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                             fg="black",
-                             bg="white")
+                             fg=SetJson["fg_color"],
+                             bg=SetJson["bg_color"])
         text_bai1.place(x=1, y=42)
         text_du = tk.Label(root, text='度',  # 设置文本内容
                            justify='left',  # 设置文本对齐方式：左对齐
                            anchor='nw',  # 设置文本在label的方位：西北方位
                            font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                           fg="black",
-                           bg="white")
+                           fg=SetJson["fg_color"],
+                           bg=SetJson["bg_color"])
         text_du.place(x=1, y=104)
         text_bai2 = tk.Label(root, text='百',  # 设置文本内容
                              justify='left',  # 设置文本对齐方式：左对齐
                              anchor='nw',  # 设置文本在label的方位：西北方位
                              font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                             fg="black",
-                             bg="white")
+                             fg=SetJson["fg_color"],
+                             bg=SetJson["bg_color"])
         text_bai2.place(x=1, y=166)
         text_ke = tk.Label(root, text='科',  # 设置文本内容
                            justify='left',  # 设置文本对齐方式：左对齐
                            anchor='nw',  # 设置文本在label的方位：西北方位
                            font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                           fg="black",
-                           bg="white")
+                           fg=SetJson["fg_color"],
+                           bg=SetJson["bg_color"])
         text_ke.place(x=1, y=228)
         # 原内容
         origin_text =tk.Label(root, text=recent_txt,  # 设置文本内容
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 15,'bold'),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         origin_text.place(x=25, y=5)
 
         des_text =tk.Label(root, text="描述",  # 设置文本内容
                  justify='center',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 8),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         des_text.place(x=23, y=35)
 
         des_text =tk.Label(root, text=des,  # 设置文本内容
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 8),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white"
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"]
                            ,wraplength=165)
         des_text.place(x=23, y=54)
         des_text.bind('<Button>', lambda event: openUrl(event, url))
@@ -451,16 +451,16 @@ def Gui(root,SetJson,x,y,recent_txt):
                  justify='center',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 8),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         abstract_text.place(x=23, y=75)
         abstract = "    "+abstract
         abstract_text =tk.Label(root, text=abstract,  # 设置文本内容
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 9),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white"
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"]
                 ,wraplength=165
                                 )
         abstract_text.place(x=23, y=95)
@@ -472,15 +472,15 @@ def Gui(root,SetJson,x,y,recent_txt):
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         text_fan.place(x=1, y=20)
         text_yi = tk.Label(root, text='译',  # 设置文本内容
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         text_yi.place(x=1, y=50)
         # 单词中文判断
 
@@ -490,16 +490,16 @@ def Gui(root,SetJson,x,y,recent_txt):
                  ,justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 15,"bold"),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         origin.place(x=25, y=5)
 
         baidufanyi = tk.Label(root, text="以下翻译来源---百度翻译"  # 设置文本内容
                  ,justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 8),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         baidufanyi.place(x=40, y=33)
 
 
@@ -511,8 +511,8 @@ def Gui(root,SetJson,x,y,recent_txt):
                  ,justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 15,"bold"),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         baidufanyi_context.place(x=23, y=50)
 
 
@@ -522,30 +522,30 @@ def Gui(root,SetJson,x,y,recent_txt):
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         text_bai1.place(x=1, y=133)
         text_du = tk.Label(root, text='度',  # 设置文本内容
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
 
         text_du.place(x=1, y=163)
         text_bai2 = tk.Label(root, text='百',  # 设置文本内容
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         text_bai2.place(x=1, y=193)
         text_ke = tk.Label(root, text='科',  # 设置文本内容
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         text_ke.place(x=1, y=223)
 
 
@@ -553,8 +553,8 @@ def Gui(root,SetJson,x,y,recent_txt):
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 13),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         des_text.place(x=23, y=95)
         des_text.bind('<Button>', lambda event: openUrl(event, url))
         abstract = "    "+abstract
@@ -562,8 +562,8 @@ def Gui(root,SetJson,x,y,recent_txt):
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 9),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white"
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"]
                 ,wraplength=165
                                 )
         abstract_text.place(x=23, y=125)
@@ -622,8 +622,8 @@ def CardGui(SetJson,x,y,num,cardtext_list):
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
-                 bg="white")
+                 fg=SetJson["fg_color"],
+                 bg=SetJson["bg_color"])
         title_text.place(x=0, y=-1)
 
         getcard_des = str(eval(str(cardtext_list[i]))['format'])
@@ -635,9 +635,9 @@ def CardGui(SetJson,x,y,num,cardtext_list):
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 7),  # 设置字体：微软雅黑，字号：18
-                 fg="black",
+                 fg=SetJson["fg_color"],
          wraplength = 98,
-                 bg="white")
+                 bg=SetJson["bg_color"])
         card_des.place(x=0, y=18)
 
         temp_list.append(root)

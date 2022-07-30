@@ -37,8 +37,13 @@ midmousebt.py
 打包语句
 
 ```bash
-pyinstaller -F -i icon.ico --version-file=file_version_info.txt midmousebt.py
+pyinstaller -F -i icon.ico --version-file=file_version_info.txt midmousebt.py -w
 ```
 
 也可以使用打包完成的软件
 
+![image-20220730114701943](C:\Users\14038\AppData\Roaming\Typora\typora-user-images\image-20220730114701943.png)
+
+确保软件包中含有四个文件，否则将无法运行
+
+双击MousePlus.exe后，大约3秒后程序开始运行

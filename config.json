@@ -11,9 +11,6 @@
   "display_width": 1920,
   "display_height": 1080,
 
-  "widget_postion_width": 1570,
-  "widget_postion_height": 15,
-  "page_num": 9,
-  "get_class": "cc-cd"
-
+  "bg_color": "white",
+  "fg_color": "black"
 }
