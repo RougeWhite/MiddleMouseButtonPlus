@@ -36,6 +36,7 @@ midmousebt.py
 
 打包语句
 
+
 ```bash
 pyinstaller -F -i icon.ico --version-file=file_version_info.txt midmousebt.py -w
 ```
