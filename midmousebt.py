@@ -248,6 +248,9 @@ root_list = []
 
 def on_click(x,y,button,pressed):
     global drag_flag,mouse_press,mouse_release,recent_txt,widget_display,notblock,mouse_x,mouse_y
+
+    recent_txt = pyperclip.paste()
+
     mouse_x = x
     mouse_y = y
     if button.name == 'middle' and pressed:
@@ -284,20 +287,20 @@ def on_click(x,y,button,pressed):
                 widget_display = False
             else:
                 root_list.append(root)
-    if not pressed and button.name == 'left':
-        mouse_release=(x,y)
-    if drag_flag:
-        if mouse_press != mouse_release:
-            control = keyboard.Controller()
-            time.sleep(0.01)
-            with control.pressed(keyboard.Key.ctrl):
-                control.press('c')
-                control.release('c')
-            time.sleep(0.01)
-            recent_txt = pyperclip.paste()
-#            处理文本
-        else:
-            pass
+#     if not pressed and button.name == 'left':
+#         mouse_release=(x,y)
+#     if drag_flag:
+#         if mouse_press != mouse_release:
+#             control = keyboard.Controller()
+#             time.sleep(0.01)
+#             with control.pressed(keyboard.Key.ctrl):
+#                 control.press('c')
+#                 control.release('c')
+#             time.sleep(0.01)
+#             recent_txt = pyperclip.paste()
+# #            处理文本
+#         else:
+#             pass
 
 def midmouseplus():
     time.sleep(0.4)
@@ -376,9 +379,9 @@ def Gui(root,SetJson,x,y,recent_txt):
     global card_img
     card_img = ImageTk.PhotoImage(resize(os.getcwd() + './images/card.png'))
     # 创建画布
-    canvas = tk.Canvas(root, width=200, height=300, bg="white")
+    canvas = tk.Canvas(root, width=widget_width, height=widget_height, bg="white")
     canvas.place(x=1, y=0)
-    canvas.create_line(20, 0, 20, 300)
+    canvas.create_line(20, 0, 20, 325)
     # 创建按钮
     pre_bt = tk.Button(root
                        # , text="<<"
@@ -589,7 +592,27 @@ def Gui(root,SetJson,x,y,recent_txt):
 def openUrl(event,j):
     webbrowser.open(j, new=0, autoraise=True)
 
-
+# 数据解析
+def dataParse(data):
+    result = ''
+    if data.find(">")!= -1 or data.find("<")!= -1:
+        pre = "<"
+        prelist = []
+        bre = ">"
+        brelist = []
+        for index ,i in enumerate(data):
+            if i == pre:
+                prelist.append(index)
+            if i ==bre:
+                brelist.append(index)
+        if prelist[0]!=0:
+            result = data[0:prelist[0]]
+        brelist.pop()
+        for j in range(len(brelist)):
+            result = result + data[brelist[j]+1:prelist[j+1]]
+        return result
+    else:
+        return data
 
 
 
@@ -610,23 +633,24 @@ def CardGui(SetJson,x,y,num,cardtext_list):
         title_text =tk.Label(root, text=eval(str(cardtext_list[i]))['name'],  # 设置文本内容
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
-                 font=('微软雅黑', 12),  # 设置字体：微软雅黑，字号：18
+                 font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
                  fg="black",
                  bg="white")
-        title_text.place(x=0, y=0)
+        title_text.place(x=0, y=-1)
 
         getcard_des = str(eval(str(cardtext_list[i]))['format'])
+
         getcard_des_tmp_list = getcard_des.split("\'")
         new_des = getcard_des_tmp_list[1]
-
-        card_des=tk.Label(root, text=new_des,  # 设置文本内容
+        thedes = dataParse(new_des)
+        card_des=tk.Label(root, text=thedes,  # 设置文本内容
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
-                 font=('微软雅黑', 8),  # 设置字体：微软雅黑，字号：18
+                 font=('微软雅黑', 7),  # 设置字体：微软雅黑，字号：18
                  fg="black",
-         wraplength = 100,
+         wraplength = 98,
                  bg="white")
-        card_des.place(x=0, y=25)
+        card_des.place(x=0, y=18)
 
         temp_list.append(root)
 
@@ -644,7 +668,11 @@ def OpenCard(cardtext_list):
         num = len(cardtext_list)
         firstcardx = notblock[2]
         firstcardy = notblock[1]
-        CardGui(SetJson, firstcardx, firstcardy, num,cardtext_list)
+        cardthread = Thread(target=CardGui(SetJson, firstcardx, firstcardy, num,cardtext_list))
+        # 打开系统托盘
+        cardthread.daemon = True
+        cardthread.start()
+
     else:
         # print("关闭卡片")
         while cardroot_list:
