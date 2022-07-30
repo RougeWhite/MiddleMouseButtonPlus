@@ -201,7 +201,6 @@ class FolderBookmarkTaskBarIcon(wx.adv.TaskBarIcon):
     def onExit(self, event):
         try:
             wx.Exit()
-        # time.sleep(1)
             sys.exit()
         except:
             sys.exit()
@@ -630,7 +629,10 @@ def CardGui(SetJson,x,y,num,cardtext_list):
         root.set_window_size(int(SetJson["card_width"]), int(SetJson["card_height"]))
         root.set_display_postion(cardx, cardy)
         # eval(str(cardtext_list[i]))['name']
-        title_text =tk.Label(root, text=eval(str(cardtext_list[i]))['name'],  # 设置文本内容
+        namedata = eval(str(cardtext_list[i]))['name']
+        thename = dataParse(namedata)
+
+        title_text =tk.Label(root, text=thename,  # 设置文本内容
                  justify='left',  # 设置文本对齐方式：左对齐
                  anchor='nw',  # 设置文本在label的方位：西北方位
                  font=('微软雅黑', 10),  # 设置字体：微软雅黑，字号：18
