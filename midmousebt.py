@@ -112,20 +112,6 @@ def text_create(path, msg):
     f.write(msg)
     f.close()
 
-# # 动态写入用户配置
-# def WriteUserSet(SetJson,error_List):
-#     Now_Path = os.getcwd()
-#     user_setting_filename = SetJson["userconfig"]
-#     User_setting_filename_dir =Now_Path + "\\" + user_setting_filename
-#     # 获取设置
-#     UserSet = json.loads(str(GetUserSet(SetJson)).split('\'')[1])
-#     try:
-#         UserSet.remove(error_List[0])
-#     except:
-#         print("页面已经移除了")
-#     text_create(User_setting_filename_dir, str(UserSet))
-#     Result_List = UserSet4Data(UserSet, Data_List)
-#     return UserSet,Result_List
 
 # 系统设置
 def Setting(retval,default_setting_filename):
